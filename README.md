@@ -8,6 +8,7 @@ Types of toast messages
 =======================
 
 You have 4 different toast types you can show. Each type comes with its own icon and colored border. The types are:
+
 * notice
 * success
 * warning
