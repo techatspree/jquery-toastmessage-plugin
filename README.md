@@ -56,7 +56,8 @@ For further style configuration please see corresponding css file: src/main/reso
 Disclaimer
 ==========
 This plugin is based on the jquery-notice (http://sandbox.timbenniks.com/projects/jquery-notice/)
-but is enhanced in several ways
+but is enhanced in several ways:
+
 * configurable positioning
 * convenience methods for different message types
 * callback functionality when closing the toast
