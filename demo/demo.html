@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=MacRoman">
+        <link type="text/css" href="css/jquery.toastmessage.css" rel="stylesheet"/>
+        <script type="text/javascript" src="jquery-1.4.2.js"></script>
+        <script type="text/javascript" src="jquery.toastmessage.js"></script>
+        <title>toastmessage Test</title>
+    </head>
+    <body>
+       <script type="text/javascript">
+
+        $.showToast({
+            text     : 'Success Dialog which is sticky',
+            sticky   : true,
+            position : 'top-right',
+            type     : 'success',
+            closeText: '',
+            close    : function () {console.log("toast is closed ...");}
+        });
+        $.showToast({
+            text     : 'Notice Dialog which is sticky',
+            sticky   : true,
+            position : 'top-right',
+            type     : 'notice',
+            closeText: '',
+            close    : function () {console.log("toast is closed ...");}
+        });
+        $.showToast({
+            text     : 'Warning Dialog which is sticky',
+            sticky   : true,
+            position : 'top-right',
+            type     : 'warning',
+            closeText: '',
+            close    : function () {console.log("toast is closed ...");}
+        });
+        $.showToast({
+            text     : 'Error Dialog which is sticky',
+            sticky   : true,
+            position : 'top-right',
+            type     : 'error',
+            closeText: '',
+            close    : function () {console.log("toast is closed ...");}
+        });
+
+        $.showSuccessToast("Success Dialog which is fading away ...");
+        $.showNoticeToast("Notice  Dialog which is fading away ...");
+        $.showWarningToast("Warning Dialog which is fading away ...");
+        $.showErrorToast("Error Dialog which is fading away ...");
+
+       </script>
+    </body>
+</html>

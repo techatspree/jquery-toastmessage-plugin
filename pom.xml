@@ -1,0 +1,146 @@
+<!--
+ Copyright 2010 akquinet
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.akquinet.jquery.plugins</groupId>
+  <artifactId>jquery-toastmessage-plugin</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>JQuery Toastmessage Plugin</name>
+  <description>A JQuery plugin for creating Android-like Toastmessages</description>
+
+  <!--
+  <url>http://akquinet.github.com/hubu</url>
+  -->
+  <inceptionYear>2010</inceptionYear>
+
+  <organization>
+    <name>akquinet A.G.</name>
+    <url>http://www.akquinet.de/en</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/javascript</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>.</directory>
+        <targetPath>META-INF</targetPath>
+        <includes>
+          <include>LICENSE*</include>
+          <include>NOTICE*</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>tv.bodil</groupId>
+        <artifactId>maven-testlol-plugin</artifactId>
+        <version>1.2.2</version>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <basePath>src/main/javascript</basePath>
+              <testSuite>src/test/javascript</testSuite>
+              <globalFiles>
+                <param>src/test/js/jquery-1.4.2.js</param>
+              </globalFiles>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>gr.abiss.mvn.plugins</groupId>
+        <artifactId>maven-jstools-plugin</artifactId>
+        <version>0.7</version>
+        <configuration>
+          <jsDir>src/main/javascript</jsDir>
+          <includePrivate>true</includePrivate>
+          <includeUndocumented>true</includeUndocumented>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>jslint</report>
+              <report>jsdoc</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.6</version>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>
