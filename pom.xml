@@ -18,12 +18,16 @@
   <groupId>de.akquinet.jquery.plugins</groupId>
   <artifactId>jquery-toastmessage-plugin</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>JQuery Toastmessage Plugin</name>
+  <name>Akquinet - JQuery Toastmessage Plugin</name>
   <description>A JQuery plugin for creating Android-like Toastmessages</description>
 
-  <!--
-  <url>http://akquinet.github.com/hubu</url>
-  -->
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>5</version>
+  </parent>
+
+  <url>https://github.com/akquinet/jquery-toastmessage-plugin</url>
   <inceptionYear>2010</inceptionYear>
 
   <organization>
