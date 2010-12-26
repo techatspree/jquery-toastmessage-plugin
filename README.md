@@ -1,31 +1,50 @@
 Do you wanna have some toasts ?
 ===============================
-jquery-toastmessage-plugin is a JQuery plugin which provides android-like notification messages.
+jquery-toastmessage-plugin is a JQuery plugin which provides android-like notification messages. so, the toasted messages arrived on the screen in a seamless and natural way. They may or may not disrupt the user and they are still informative. It's a quite nice way to report info or error to the user.
 
+The plugin is entirely customizable. So you can change the positioning, the required user action, the style and so on.
 
+Getting the plugin
+==================
+The plugin is packaged inside a Jar file (Java Archive). So just download the jar file and unzip it:
 
+    jquery.toastmessage.js  <-- the plugin
+	css/jquery.toastmessage.css   <-- the css file
+	images/error.png        <-- image
+	images/growl-close.gif  <-- image
+	images/notice.png       <-- image
+	images/success.png      <-- image
+	images/warning.png      <-- image
+	META-INF/MANIFEST.MF    
+	META-INF/LICENSE        
+	META-INF/NOTICE
+	
+You can also directly grab the files from the latest TAG from github [https://github.com/akquinet/jquery-toastmessage-plugin/tree/jquery-toastmessage-plugin-0.1.0](https://github.com/akquinet/jquery-toastmessage-plugin/tree/jquery-toastmessage-plugin-0.1.0]).
+
+To get the plugin to work, you need the plugin javascript file, the css file and a couple of images.
+	
 Types of toast messages
 =======================
 
-You have 4 different toast types you can show. Each type comes with its own icon and colored border. The types are:
+You have 4 different toast types you can use. Each type comes with its own icon and colored border. The types are:
 
 * notice
 * success
 * warning
 * error
 
-The following methods will show a toast message:
+The following methods will display a toast message:
 
     $.showNoticeToast("some message here");
     $.showSuccessToast("some message here");
     $.showWarningToast("some message here");
     $.showErrorToast("some message here");
 
-These toast messages are show on the upper right side of your browser and will stay for some time before they will fade out automatically.
+These toast messages are shown on the upper right side of your browser and will stay for some time before they will fade out automatically.
 
 Configuration of your toasts
 ============================
-Sometime the predefined settings are not the good ones. You can use the more generell toast method to configure your
+Sometime the predefined settings are not the good ones. You can use the more generall toast method to configure your
 toast as you want.
 
     // user configured toastmessage:
