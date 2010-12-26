@@ -138,6 +138,7 @@
           </reportSet>
         </reportSets>
       </plugin>
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
@@ -145,8 +146,34 @@
       </plugin>
     </plugins>
   </reporting>
+  
+   <scm>
+    <connection>scm:git:git@github.com:akquinet/jquery-toastmessage-plugin.git</connection>
+    <url>git@github.com:akquinet/jquery-toastmessage-plugin.git</url>
+    <developerConnection>scm:git:git@github.com:akquinet/jquery-toastmessage-plugin.git</developerConnection>
+  </scm>
 
   <profiles>
+    <profile>
+      <!-- When enabled, this profile override the Sonatype distribution management -->
+      <id>ats.nexus</id>
+      <distributionManagement>
+        <repository>
+          <id>${repo.releases.id}</id>
+          <name>${repo.releases.name}</name>
+          <url>${repo.releases.url}</url>
+          <uniqueVersion>false</uniqueVersion>
+        </repository>
+
+        <snapshotRepository>
+          <id>${repo.snapshots.id}</id>
+          <name>${repo.snapshots.name}</name>
+          <url>${repo.snapshots.url}</url>
+          <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
+  
     <profile>
       <id>release</id>
       <build>
