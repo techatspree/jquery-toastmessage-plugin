@@ -16,7 +16,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.akquinet.jquery.plugins</groupId>
   <artifactId>jquery-toastmessage-plugin</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1-SNAPSHOT</version>
   <name>Akquinet - JQuery Toastmessage Plugin</name>
   <description>A JQuery plugin for creating Android-like Toastmessages</description>
 
