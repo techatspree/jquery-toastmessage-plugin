@@ -9,8 +9,7 @@
     </head>
     <body>
        <script type="text/javascript">
-
-        $.showToast({
+        $().toastmessage('showToast', {
             text     : 'Success Dialog which is sticky',
             sticky   : true,
             position : 'top-right',
@@ -18,7 +17,7 @@
             closeText: '',
             close    : function () {console.log("toast is closed ...");}
         });
-        $.showToast({
+        $().toastmessage('showToast', {
             text     : 'Notice Dialog which is sticky',
             sticky   : true,
             position : 'top-right',
@@ -26,7 +25,7 @@
             closeText: '',
             close    : function () {console.log("toast is closed ...");}
         });
-        $.showToast({
+        $().toastmessage('showToast', {
             text     : 'Warning Dialog which is sticky',
             sticky   : true,
             position : 'top-right',
@@ -34,7 +33,7 @@
             closeText: '',
             close    : function () {console.log("toast is closed ...");}
         });
-        $.showToast({
+        $().toastmessage('showToast', {
             text     : 'Error Dialog which is sticky',
             sticky   : true,
             position : 'top-right',
@@ -43,10 +42,10 @@
             close    : function () {console.log("toast is closed ...");}
         });
 
-        $.showSuccessToast("Success Dialog which is fading away ...");
-        $.showNoticeToast("Notice  Dialog which is fading away ...");
-        $.showWarningToast("Warning Dialog which is fading away ...");
-        $.showErrorToast("Error Dialog which is fading away ...");
+        $().toastmessage('showSuccessToast' ,"Success Dialog which is fading away ...");
+        $().toastmessage('showNoticeToast', "Notice  Dialog which is fading away ...");
+        $().toastmessage('showWarningToast', "Warning Dialog which is fading away ...");
+        $().toastmessage('showErrorToast', "Error Dialog which is fading away ...");
 
        </script>
     </body>

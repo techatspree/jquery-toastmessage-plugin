@@ -17,7 +17,7 @@ load(basePath + "jquery.toastmessage.js");
 
 function testShowSuccessToast() {
 
-    $.showSuccessToast("SUCCESS");
+    $().toastmessage('showSuccessToast', "SUCCESS");
 
     assertCreatedAndVisible("Toastmessage Container", '.toast-container');
     assertCreatedAndVisible("Success Toastmessage", '.toast-item.toast-type-success');
@@ -25,7 +25,7 @@ function testShowSuccessToast() {
 
 function testShowNoticeToast() {
 
-    $.showNoticeToast("NOTICE");
+    $().toastmessage('showNoticeToast', "NOTICE");
 
     assertCreatedAndVisible("Toastmessage Container", '.toast-container');
     assertCreatedAndVisible("Notice Toastmessage", '.toast-item.toast-type-notice');
@@ -33,7 +33,7 @@ function testShowNoticeToast() {
 
 function testWarningToast() {
 
-    $.showWarningToast("WARNING");
+    $().toastmessage('showWarningToast', "WARNING");
 
     assertCreatedAndVisible("Toastmessage Container", '.toast-container');
     assertCreatedAndVisible("Notice Toastmessage", '.toast-item.toast-type-warning');
@@ -41,7 +41,7 @@ function testWarningToast() {
 
 function testErrorToast() {
 
-    $.showErrorToast("ERROR");
+    $().toastmessage('showErrorToast', "ERROR");
 
     assertCreatedAndVisible("Toastmessage Container", '.toast-container');
     assertCreatedAndVisible("Notice Toastmessage", '.toast-item.toast-type-error');
@@ -49,21 +49,41 @@ function testErrorToast() {
 
 
 function testShowConfiguredToast() {
-    $.showToast({
-        text     : 'Success Dialog',
+    $().toastmessage({
         sticky   : true,
         position : 'top-right',
-        type     : 'success',
         closeText: ''
+    });
+    $().toastmessage('showToast', {
+        text     : 'Success Dialog',
+        type     : 'success'
     });
 
     assertCreatedAndVisible("Toastmessage Container", '.toast-container');
     assertCreatedAndVisible("Success Toastmessage", '.toast-item.toast-type-success');
 }
 
+function testCloseToastItem() {
+    var closeCalled = false;
+    var toast = $().toastmessage('showToast', {
+        text     : 'Success Dialog',
+        sticky   : true,
+        position : 'top-right',
+        type     : 'success'
+    });
+
+    assertCreatedAndVisible("Toastmessage Container", '.toast-container');
+    assertCreatedAndVisible("Success Toastmessage", '.toast-item.toast-type-success');
+    assertFalse("CloseCallback should not called yet!", closeCalled);
+
+    // closing the toast via API call
+    $().toastmessage('removeToast', toast, { close : function () { closeCalled = true; }});
+    assertTrue("CloseCallback was not called!", closeCalled);
+}
+
 function testShowConfiguredToastWithCloseFunction() {
     var closeCalled = false;
-    $.showToast({
+    $().toastmessage('showToast', {
         text     : 'Success Dialog',
         sticky   : true,
         position : 'top-right',
