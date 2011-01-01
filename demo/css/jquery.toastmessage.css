@@ -33,7 +33,7 @@
 }
 
 .toast-item-close {
-    background:url(../images/growl-close.gif);
+    background:url(../images/close.gif);
     width:22px;
     height:22px;
     position: absolute;
