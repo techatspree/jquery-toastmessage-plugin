@@ -77,7 +77,7 @@
               <basePath>src/main/javascript</basePath>
               <testSuite>src/test/javascript</testSuite>
               <globalFiles>
-                <param>src/test/js/jquery-1.4.2.js</param>
+                <param>src/test/js/jquery-1.4.4.min.js</param>
               </globalFiles>
             </configuration>
           </execution>
