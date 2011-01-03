@@ -156,6 +156,15 @@
     <developerConnection>scm:git:git@github.com:akquinet/jquery-toastmessage-plugin.git</developerConnection>
   </scm>
 
+  <distributionManagement>
+    <site>
+      <!-- This makes the assumption that the gh-pages branch is tracked into ../gh-pages -->
+      <id>github-pages</id>
+      <url>file:../gh-pages/site</url>
+    </site>
+</distributionManagement>
+
+
   <profiles>
     <profile>
       <!-- When enabled, this profile override the Sonatype distribution management -->
