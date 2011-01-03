@@ -11,7 +11,7 @@ To get some more information and see the toastmessage plugin in action, just cli
 
 Documentation
 =============
-[Wiki](https://github.com/akquinet/jquery-toastmessage-plugin/wiki)
+An in depth documentation how to use this plugin can be found at the [Wiki](https://github.com/akquinet/jquery-toastmessage-plugin/wiki).
 
 
 License
