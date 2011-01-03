@@ -4,6 +4,11 @@ jquery-toastmessage-plugin is a JQuery plugin which provides android-like notifi
 
 The plugin is entirely customizable. So you can change the positioning, the required user action, the style and so on.
 
+Overview and Demo
+=================
+
+To get some more information and see the toastmessage plugin in action, just click [here](http://akquinet.github.com/jquery-toastmessage-plugin).
+
 Documentation
 =============
 [Wiki](https://github.com/akquinet/jquery-toastmessage-plugin/wiki)
