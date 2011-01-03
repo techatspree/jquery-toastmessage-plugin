@@ -6,7 +6,7 @@ The plugin is entirely customizable. So you can change the positioning, the requ
 
 Documentation
 =============
-https://github.com/akquinet/jquery-toastmessage-plugin/wiki
+[Wiki](https://github.com/akquinet/jquery-toastmessage-plugin/wiki)
 
 
 License
