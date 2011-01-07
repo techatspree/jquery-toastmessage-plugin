@@ -116,11 +116,18 @@
         <version>1.1</version>
         <executions>
           <execution>
+            <id>compress-js</id>
             <goals>
               <goal>compress</goal>
             </goals>
           </execution>
         </executions>
+        <configuration>
+            <excludes>
+              <exclude>LICENSE*</exclude>
+              <exclude>NOTICE*</exclude>
+            </excludes>
+        </configuration>
       </plugin>
 
       <plugin>
