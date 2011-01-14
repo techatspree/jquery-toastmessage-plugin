@@ -1,7 +1,5 @@
 describe('the Toastmessage jQuery Plugin',function(){
-	
-	var rootId = 'testContainer';
-	
+
 	// Remove any exisiting toastmessage container
 	beforeEach(function() {
         $('.toast-container').remove();
