@@ -3,6 +3,10 @@ describe('the Toastmessage jQuery Plugin',function(){
 	// Remove any exisiting toastmessage container
 	beforeEach(function() {
         $('.toast-container').remove();
+        this.addMatchers({
+            toastContainterCreated : function() { return $('.toast-container').length > 0; }
+        });
+
     });
 	
 	//Clean it up after each spec
@@ -17,28 +21,28 @@ describe('the Toastmessage jQuery Plugin',function(){
             // call to our jquery plugin under test
             $().toastmessage('showSuccessToast', "SUCCESS");
 
-			expect($('.toast-container').length > 0).toBeTruthy();
+			expect().toastContainterCreated();
 			expect($('.toast-item.toast-type-success').length > 0).toBeTruthy();
 		});
 		it('shows a notice toastmessage',function(){
             // call to our jquery plugin under test
             $().toastmessage('showNoticeToast', "NOTICE");
 
-			expect($('.toast-container').length > 0).toBeTruthy();
+            expect().toastContainterCreated();
 			expect($('.toast-item.toast-type-notice').length > 0).toBeTruthy();
 		});
 		it('shows a warning toastmessage',function(){
             // call to our jquery plugin under test
             $().toastmessage('showWarningToast', "WARNING");
 
-			expect($('.toast-container').length > 0).toBeTruthy();
+			expect().toastContainterCreated();
 			expect($('.toast-item.toast-type-warning').length > 0).toBeTruthy();
 		});
 		it('shows a error toastmessage',function(){
             // call to our jquery plugin under test
             $().toastmessage('showErrorToast', "ERROR");
 
-			expect($('.toast-container').length > 0).toBeTruthy();
+			expect().toastContainterCreated();
 			expect($('.toast-item.toast-type-error').length > 0).toBeTruthy();
 		});
 		it('shows a user configured toastmessage',function(){
@@ -53,7 +57,7 @@ describe('the Toastmessage jQuery Plugin',function(){
                 type     : 'success'
             });
 
-			expect($('.toast-container').length > 0).toBeTruthy();
+			expect().toastContainterCreated();
 			expect($('.toast-item.toast-type-success').length > 0).toBeTruthy();
 		});
 	});
