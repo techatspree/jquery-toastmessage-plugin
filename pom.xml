@@ -63,46 +63,38 @@
     </resources>
     
     <plugins>
+
       <plugin>
-        <groupId>tv.bodil</groupId>
-        <artifactId>maven-testlol-plugin</artifactId>
-        <version>1.2.2</version>
-        <executions>
-          <execution>
-            <phase>test</phase>
-            <goals>
-              <goal>test</goal>
-            </goals>
+            <groupId>searls</groupId>
+            <artifactId>jasmine-maven-plugin</artifactId>
+            <version>1.0.1-beta-4</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>generateManualRunner</goal>
+                        <goal>resources</goal>
+                        <goal>testResources</goal>
+                        <goal>test</goal>
+                        <goal>preparePackage</goal>
+                    </goals>
+                </execution>
+            </executions>
             <configuration>
-              <basePath>src/main/javascript</basePath>
-              <testSuite>src/test/javascript</testSuite>
-              <globalFiles>
-                <param>src/test/js/jquery-1.4.4.min.js</param>
-              </globalFiles>
+                <jsSrcDir>src/main/javascript</jsSrcDir>
+                <jsTestSrcDir>src/test/javascript</jsTestSrcDir>
+                <preloadSources>
+                    <preloadSource>lib/jquery-1.4.4.min.js</preloadSource>
+                </preloadSources>
             </configuration>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      
-       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
             <goals>
               <goal>jar</goal>
             </goals>
@@ -227,5 +219,22 @@
       </build>
     </profile>
   </profiles>
+
+  <repositories>
+        <repository>
+            <id>searls-maven-thirdparty</id>
+            <url>http://searls-maven-repository.googlecode.com/svn/trunk/thirdparty</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>searls-maven-releases</id>
+            <url>http://searls-maven-repository.googlecode.com/svn/trunk/releases</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>searls-maven-snapshots</id>
+            <url>http://searls-maven-repository.googlecode.com/svn/trunk/snapshots</url>
+        </pluginRepository>
+  </pluginRepositories>
 
 </project>
