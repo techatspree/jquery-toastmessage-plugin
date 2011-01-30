@@ -65,9 +65,9 @@
     <plugins>
 
       <plugin>
-            <groupId>searls</groupId>
+            <groupId>com.github.searls</groupId>
             <artifactId>jasmine-maven-plugin</artifactId>
-            <version>1.0.1-beta-4</version>
+            <version>1.0.1-beta-6</version>
             <executions>
                 <execution>
                     <goals>
@@ -219,12 +219,5 @@
       </build>
     </profile>
   </profiles>
-
-  <pluginRepositories>
-        <pluginRepository>
-            <id>searls-maven-releases</id>
-            <url>http://searls-maven-repository.googlecode.com/svn/trunk/releases</url>
-        </pluginRepository>
-  </pluginRepositories>
 
 </project>
