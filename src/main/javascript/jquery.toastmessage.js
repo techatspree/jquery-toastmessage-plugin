@@ -59,7 +59,7 @@
 				inEffect: 			{opacity: 'show'},	// in effect
 				inEffectDuration: 	600,				// in effect duration in miliseconds
 				stayTime: 			3000,				// time in miliseconds before the item has to disappear
-				text: 				'',					// content of the item
+				text: 				'',					// content of the item. Might be a string or a jQuery object. Be aware that any jQuery object which is acting as a message will be deleted when the toast is fading away.
 				sticky: 			false,				// should the toast item sticky or not?
 				type: 				'notice', 			// notice, warning, error, success
                 position:           'top-right',        // top-right, center, middle-bottom ... Position of the toast container holding different toast. Position can be set only once at the very first call, changing the position after the first call does nothing
@@ -85,7 +85,7 @@
 
 			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
 			toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
-			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html('<p>'+localSettings.text+'</p>').animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
 			toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings) });
 			toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
 
