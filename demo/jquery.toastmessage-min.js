@@ -5,7 +5,7 @@ c.extend(g,b,f);
 var j,e,d,i,h;
 j=(!c(".toast-container").length)?c("<div></div>").addClass("toast-container").addClass("toast-position-"+g.position).appendTo("body"):c(".toast-container");
 e=c("<div></div>").addClass("toast-item-wrapper");
-d=c("<div></div>").hide().addClass("toast-item toast-type-"+g.type).appendTo(j).html("<p>"+g.text+"</p>").animate(g.inEffect,g.inEffectDuration).wrap(e);
+d=c("<div></div>").hide().addClass("toast-item toast-type-"+g.type).appendTo(j).html(c("<p>").append(g.text)).animate(g.inEffect,g.inEffectDuration).wrap(e);
 i=c("<div></div>").addClass("toast-item-close").prependTo(d).html(g.closeText).click(function(){c().toastmessage("removeToast",d,g)
 });
 h=c("<div></div>").addClass("toast-item-image").addClass("toast-item-image-"+g.type).prependTo(d);
