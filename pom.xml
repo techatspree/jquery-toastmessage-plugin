@@ -83,7 +83,7 @@
                 <jsSrcDir>src/main/javascript</jsSrcDir>
                 <jsTestSrcDir>src/test/javascript</jsTestSrcDir>
                 <preloadSources>
-                    <preloadSource>lib/jquery-1.4.4.min.js</preloadSource>
+                    <preloadSource>lib/jquery-1.5.min.js</preloadSource>
                 </preloadSources>
             </configuration>
       </plugin>
