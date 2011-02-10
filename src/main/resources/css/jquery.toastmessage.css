@@ -99,24 +99,44 @@
  * where 'value' is the real value of the plugin option 'position'
  * 
  */
+.toast-position-top-left {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+.toast-position-top-center {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    margin-left: -140px;
+}
+
 .toast-position-top-right {
     position: fixed;
     top: 20px;
     right: 20px;
 }
 
-.toast-position-center {
-    position: absolute;
+.toast-position-middle-left {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    margin-top: -40px;
+}
+
+.toast-position-middle-center {
+    position: fixed;
     left: 50%;
     margin-left: -140px;
     margin-top: -40px;
     top: 50%;
 }
 
-.toast-position-middle-bottom {
-    position: absolute;
-    left: 50%;
+.toast-position-middle-right {
+    position: fixed;
+    right: 20px;
     margin-left: -140px;
     margin-top: -40px;
-    top: 75%;
+    top: 50%;
 }
