@@ -5,9 +5,9 @@
 
 
 * html .toast-container {
-	position: absolute;		
+	position: absolute;
 }
- 
+
 .toast-item {
 	height: auto;
 	background: #333;
@@ -67,19 +67,19 @@
 }
 
 
-/** 
- * toast types 
- * 
+/**
+ * toast types
+ *
  * pattern: toast-type-[value]
  * where 'value' is the real value of the plugin option 'type'
- * 
+ *
  */
 .toast-type-notice {
-    color: white;    
+    color: white;
 }
 
 .toast-type-success {
-    color: white;    
+    color: white;
 }
 
 .toast-type-warning {
@@ -92,12 +92,12 @@
     border-color: #B32B2B;
 }
 
-/** 
- * positions 
- * 
+/**
+ * positions
+ *
  * pattern: toast-position-[value]
  * where 'value' is the real value of the plugin option 'position'
- * 
+ *
  */
 .toast-position-top-left {
     position: fixed;
