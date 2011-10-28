@@ -8,12 +8,12 @@ describe('the Toastmessage jQuery Plugin',function(){
         });
 
     });
-	
+
 	//Clean it up after each spec
 	afterEach(function() {
         $('.toast-container').remove();
 	});
-		
+
 	//Specs
 	describe('showing toastmessages',function() {
 		it('shows a success toastmessage',function(){
