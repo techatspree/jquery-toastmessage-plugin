@@ -140,3 +140,24 @@
     margin-top: -40px;
     top: 50%;
 }
+
+.toast-position-bottom-left {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+}
+
+.toast-position-bottom-center {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -140px;
+}
+
+.toast-position-bottom-right {
+    position: fixed;
+    right: 20px;
+    margin-left: -140px;
+    margin-top: -40px;
+    bottom: 20px;
+}
