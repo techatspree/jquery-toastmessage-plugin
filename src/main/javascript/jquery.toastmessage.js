@@ -83,9 +83,21 @@
 			// declare variables
             var toastWrapAll, toastItemOuter, toastItemInner, toastItemClose, toastItemImage;
 
+            var dashPos = localSettings.position.indexOf("-");
+            var statusPosName = localSettings.position.substring(0,dashPos);
+            
 			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
 			toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
-			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+			
+			//if position is bottom, then prepend
+			if (statusPosName == 'bottom') {
+				toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).prependTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+            } else {
+            	
+            	//if position is not bottom - (middle OR top), then append message
+            	toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+            }
+			
 			toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings) });
 			toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
 
