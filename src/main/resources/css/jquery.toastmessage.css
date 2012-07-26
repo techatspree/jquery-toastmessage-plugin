@@ -44,10 +44,10 @@
 .toast-item-image {
     width:32px;
     height: 32px;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
-    float:left;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    left: 10px;
 }
 
 .toast-item-image-notice {
