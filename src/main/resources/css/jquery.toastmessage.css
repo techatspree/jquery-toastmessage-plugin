@@ -12,6 +12,7 @@
 	height: auto;
 	background: #333;
     opacity: 0.9;
+	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	color: #eee;
