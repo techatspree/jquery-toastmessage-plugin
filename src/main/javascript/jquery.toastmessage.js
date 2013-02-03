@@ -24,19 +24,19 @@
  *
  *  The following methods will display a toast message:
  *
- *   $().toastmessage('showNoticeToast', 'some message here');
- *   $().toastmessage('showSuccessToast', "some message here");
- *   $().toastmessage('showWarningToast', "some message here");
- *   $().toastmessage('showErrorToast', "some message here");
+ *  $.toastmessage('notice', 'some message here');
+ *  $.toastmessage('success', "some message here");
+ *  $.toastmessage('warning', "some message here");
+ *  $.toastmessage('error', "some message here");
  *
- *   // user configured toastmessage:
- *   $().toastmessage('showToast', {
- *      text     : 'Hello World',
- *      sticky   : true,
- *      position : 'top-right',
- *      type     : 'success',
- *      close    : function () {console.log("toast is closed ...");}
- *   });
+ *  // user configured toast:
+ *  $.toastmessage('show', {
+ *     text     : 'Hello World',
+ *     sticky   : true,
+ *     position : 'top-right',
+ *     type     : 'success',
+ *     close    : function () {console.log("toast is closed ...");}
+ *  });
  *
  *   To see some more examples please have a look into the Tests in src/test/javascript/ToastmessageTest.js
  *
@@ -75,7 +75,7 @@
             }
 		},
 
-        showToast : function(options)
+        show : function(options)
 		{
 			var localSettings = {};
             $.extend(localSettings, settings, options);
@@ -86,7 +86,7 @@
 			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
 			toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
 			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
-			toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings) });
+			toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { methods.remove(toastItemInner, localSettings) });
 			toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
 
             if(navigator.userAgent.match(/MSIE 6/i))
@@ -98,38 +98,51 @@
 			{
 				setTimeout(function()
 				{
-					$().toastmessage('removeToast', toastItemInner, localSettings);
+					methods.remove(toastItemInner, localSettings);
 				},
 				localSettings.stayTime);
 			}
             return toastItemInner;
 		},
 
-        showNoticeToast : function (message)
-        {
-            var options = {text : message, type : 'notice'};
-            return $().toastmessage('showToast', options);
+        notice : function(message, sticky) {
+            var options = {
+				'text': message,
+				'type': 'notice',
+				'sticky': sticky || false
+			};
+            return methods.show(options);
         },
 
-        showSuccessToast : function (message)
-        {
-            var options = {text : message, type : 'success'};
-            return $().toastmessage('showToast', options);
+        success : function(message, sticky) {
+            var options = {
+				'text': message,
+				'type': 'success',
+				'sticky': sticky || false
+			};
+            return methods.show(options);
         },
 
-        showErrorToast : function (message)
-        {
-            var options = {text : message, type : 'error'};
-            return $().toastmessage('showToast', options);
+        error : function(message, sticky) {
+            var options = {
+				'text': message,
+				'type': 'error',
+				'sticky': sticky || false
+			};
+            return methods.show(options);
         },
 
-        showWarningToast : function (message)
-        {
-            var options = {text : message, type : 'warning'};
-            return $().toastmessage('showToast', options);
+        warning : function(message, sticky)
+		{
+            var options = {
+				'text': message,
+				'type': 'warning',
+				'sticky': sticky || false
+			};
+            return methods.show(options);
         },
 
-		removeToast: function(obj, options)
+		remove: function(obj, options)
 		{
 			obj.animate({opacity: '0'}, 600, function()
 			{
@@ -146,7 +159,7 @@
 		}
 	};
 
-    $.fn.toastmessage = function( method ) {
+    $.toastmessage = function( method ) {
 
         // Method calling logic
         if ( methods[method] ) {
