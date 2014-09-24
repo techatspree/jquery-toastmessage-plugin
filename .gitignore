@@ -1,5 +1,4 @@
-*.iml
-/target/
-/.idea/
-*.iws
-*.ipr
+/.project
+/.buildpath
+/.settings
+/.git
