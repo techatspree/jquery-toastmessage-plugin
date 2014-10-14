@@ -62,37 +62,46 @@
 				text: 				'',					// content of the item. Might be a string or a jQuery object. Be aware that any jQuery object which is acting as a message will be deleted when the toast is fading away.
 				sticky: 			false,				// should the toast item sticky or not?
 				type: 				'notice', 			// notice, warning, error, success
-                position:           'top-right',        // top-left, top-center, top-right, middle-left, middle-center, middle-right ... Position of the toast container holding different toast. Position can be set only once at the very first call, changing the position after the first call does nothing
-                closeText:          '',                 // text which will be shown as close button, set to '' when you want to introduce an image via css
-                close:              null                // callback function when the toastmessage is closed
-            };
+				position:           'top-right',        // top-left, top-center, top-right, middle-left, middle-center, middle-right ... Position of the toast container holding different toast. Position can be set only once at the very first call, changing the position after the first call does nothing
+				closeText:          '',                 // text which will be shown as close button, set to '' when you want to introduce an image via css
+				close:              null                // callback function when the toastmessage is closed
+			};
 
-    var methods = {
-        init : function(options)
+	var methods = {
+		init : function(options)
 		{
 			if (options) {
-                $.extend( settings, options );
-            }
+				$.extend( settings, options );
+			}
 		},
 
-        showToast : function(options)
+		showToast : function(options)
 		{
 			var localSettings = {};
-            $.extend(localSettings, settings, options);
+			$.extend(localSettings, settings, options);
 
 			// declare variables
-            var toastWrapAll, toastItemOuter, toastItemInner, toastItemClose, toastItemImage;
-
-			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
+			var toastWrapAll, toastItemOuter, toastItemInner, toastItemClose, toastItemImage;
+			if($('.toast-position-' + localSettings.position).length) {
+				toastWrapAll = $('.toast-position-' + localSettings.position);
+			}
+			else {
+				toastWrapAll = $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body');
+			}
 			toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
-			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+			if(localSettings.position === 'bottom-left' || localSettings.position === 'bottom-center' || localSettings.position === 'bottom-right') {
+				toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).prependTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+			}
+			else {
+				toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+			}	
 			toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings) });
 			toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
 
-            if(navigator.userAgent.match(/MSIE 6/i))
+			if(navigator.userAgent.match(/MSIE 6/i))
 			{
-		    	toastWrapAll.css({top: document.documentElement.scrollTop});
-		    }
+				toastWrapAll.css({top: document.documentElement.scrollTop});
+			}
 
 			if(!localSettings.sticky)
 			{
@@ -102,32 +111,32 @@
 				},
 				localSettings.stayTime);
 			}
-            return toastItemInner;
+			return toastItemInner;
 		},
 
-        showNoticeToast : function (message)
-        {
-            var options = {text : message, type : 'notice'};
-            return $().toastmessage('showToast', options);
-        },
+		showNoticeToast : function (message)
+		{
+			var options = {text : message, type : 'notice'};
+			return $().toastmessage('showToast', options);
+		},
 
-        showSuccessToast : function (message)
-        {
-            var options = {text : message, type : 'success'};
-            return $().toastmessage('showToast', options);
-        },
+		showSuccessToast : function (message)
+		{
+			var options = {text : message, type : 'success'};
+			return $().toastmessage('showToast', options);
+		},
 
-        showErrorToast : function (message)
-        {
-            var options = {text : message, type : 'error'};
-            return $().toastmessage('showToast', options);
-        },
+		showErrorToast : function (message)
+		{
+			var options = {text : message, type : 'error'};
+			return $().toastmessage('showToast', options);
+		},
 
-        showWarningToast : function (message)
-        {
-            var options = {text : message, type : 'warning'};
-            return $().toastmessage('showToast', options);
-        },
+		showWarningToast : function (message)
+		{
+			var options = {text : message, type : 'warning'};
+			return $().toastmessage('showToast', options);
+		},
 
 		removeToast: function(obj, options)
 		{
@@ -138,24 +147,24 @@
 					obj.parent().remove();
 				});
 			});
-            // callback
-            if (options && options.close !== null)
-            {
-                options.close();
-            }
+			// callback
+			if (options && options.close !== null)
+			{
+				options.close();
+			}
 		}
 	};
 
-    $.fn.toastmessage = function( method ) {
+	$.fn.toastmessage = function( method ) {
 
-        // Method calling logic
-        if ( methods[method] ) {
-          return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-        } else if ( typeof method === 'object' || ! method ) {
-          return methods.init.apply( this, arguments );
-        } else {
-          $.error( 'Method ' +  method + ' does not exist on jQuery.toastmessage' );
-        }
-    };
+		// Method calling logic
+		if ( methods[method] ) {
+		  return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+		} else if ( typeof method === 'object' || ! method ) {
+		  return methods.init.apply( this, arguments );
+		} else {
+		  $.error( 'Method ' +  method + ' does not exist on jQuery.toastmessage' );
+		}
+	};
 
 })(jQuery);
